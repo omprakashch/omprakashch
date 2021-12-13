@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Target Application Test Automation Test Suite">
+<suite name="Target Application Test Automation Test Suite" verbose="1" parallel = "methods" thread-count="1" >
 
-	<!-- <listeners>
-		<listener class-name="com.qa.ExtentReportListener.ExtentReporterNG" />
-	</listeners> -->
+	 <listeners>
+		<listener class-name="com.target.qa.util.listeners.ExtentReportListener" />
+	</listeners>
 
 
 	<test name="Target App Test Cases">

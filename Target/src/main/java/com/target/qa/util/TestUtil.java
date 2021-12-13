@@ -14,14 +14,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.target.qa.base.TestBase;
 
-public class TestUtil extends TestBase {
+public class TestUtil extends TestBase{
 
 	public static long PAGE_LOAD_TIMEOUT = 60;
 	public static long IMPLICIT_WAIT = 25;
+	public WebDriver driver; 
 	
 	static String currectDir = System.getProperty("user.dir");
 	public static String TESTDATA_SHEET_PATH = currectDir+"/src/main/java/com/target/qa/testdata/TargetTestData.xlsx";
@@ -163,10 +165,9 @@ public class TestUtil extends TestBase {
 		return data;
 	}
 
-	public static void takeScreenshotAtEndOfTest() throws IOException {
+	public void takeScreenshotAtEndOfTest() throws IOException {
 	File srcFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	String currentDir = System.getProperty("user.dir");
-	FileUtils.copyFile(srcFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));
-		
+	FileUtils.copyFile(srcFile, new File(currentDir + "/screenshots/" + System.currentTimeMillis() + ".png"));	
 	}
 }

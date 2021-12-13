@@ -1,12 +1,15 @@
 package com.target.qa.pages;
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.target.qa.util.CommonElements;
 import com.target.qa.util.TestUtil;
+
+import io.qameta.allure.Step;
 
 public class HomePage extends CommonElements{
 	
@@ -27,12 +30,14 @@ public class HomePage extends CommonElements{
 		PageFactory.initElements(driver, this);
 	}
 	
+	@Step("login with username: {0} and password: {1} step... ")
 	public SignInPage clickSignIn(){
 		click(SignInIcon);
 		jseClick(SignInLink);
 		return new SignInPage();
 	}
 	
+	@Step("click on signin icon step... ")
 	public void clickSignInIcon(){
 		click(SignInIcon);
 	}
@@ -41,6 +46,7 @@ public class HomePage extends CommonElements{
 		return AccountName.getText();
 	}
 
+	@Step("getting signin option list step... ")
 	public List<WebElement> getSignInOptionList() {
 		return SignInOptionList;
 	}

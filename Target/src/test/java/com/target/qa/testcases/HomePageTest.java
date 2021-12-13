@@ -1,18 +1,32 @@
 package com.target.qa.testcases;
 
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.target.qa.base.TestBase;
 import com.target.qa.pages.HomePage;
 import com.target.qa.pages.SignInPage;
 import com.target.qa.util.CommonElements;
 import com.target.qa.util.TestUtil;
 
-public class HomePageTest extends CommonElements{
+import io.qameta.allure.Description;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 
+public class HomePageTest  extends CommonElements{
 	
-	@Test
+	
+	@Test(description = "Login in to the Target Application Test")
+	@Severity(SeverityLevel.BLOCKER)
+	@Description("Test Case Description: Verify Login Functionality")
+	@Story("Story Name: To Check Login Functionality")
 	public void verifyLoginFunctionality(){
 		HomePage homePage = new HomePage();
 		SignInPage signInPage = homePage.clickSignIn();
@@ -20,14 +34,20 @@ public class HomePageTest extends CommonElements{
 		Assert.assertTrue(homePage.getAccountName().contains("om prakash"), "Login Functionality Not Working");	
 	}
 	
-	@Test
+	@Test(description = "Verifying SignIn Option List Test")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Test Case Description: Verify SignIn Option List Test")
+	@Story("Story Name: To Check SignIn Option List")
 	public void verifySignInOptionList(){
 		HomePage homePage = new HomePage();
 		homePage.clickSignInIcon();
 		Assert.assertTrue(homePage.getSignInOptionList().size()==8, "SignIn Options Displayed Incorrectly");	
 	}
 	
-	@Test
+	@Test(description = "Verifying Trending Items Displayed Test")
+	@Severity(SeverityLevel.NORMAL)
+	@Description("Test Case Description: Verify Trending Items Displayed Test")
+	@Story("Story Name: To Check Trending Items Displayed")
 	public void verifyTrendingItemsDisplayed(){
 		HomePage homePage = new HomePage();
 		Assert.assertTrue(homePage.getTrendingItemsList().size()>1, "Trending Items Not Displayed");	
@@ -46,6 +66,5 @@ public class HomePageTest extends CommonElements{
 		homePage = signInPage.Login("username", "password");
 		Assert.assertTrue(homePage.getAccountName().contains("om prakash"), "Login Functionality Not Working");	
 	}
-	
 	
 }

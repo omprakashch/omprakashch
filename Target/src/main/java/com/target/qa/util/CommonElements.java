@@ -1,6 +1,7 @@
 package com.target.qa.util;
 import java.util.List;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -11,6 +12,8 @@ import com.target.qa.pages.TargetCircleOffersPage;
 import com.target.qa.pages.TopDealsPage;
 import com.target.qa.pages.WeeklyAdPage;
 import com.target.qa.util.TestUtil;
+
+import io.qameta.allure.Step;
 
 public class CommonElements extends TestUtil{
 	
@@ -96,6 +99,7 @@ public class CommonElements extends TestUtil{
 		return new TargetCircleOffersPage();
 	}
 	
+	@Step("getting trending items list step... ")
 	public List<WebElement> getTrendingItemsList(){
 		scroll(10);
 		return TrendingItemsList;
