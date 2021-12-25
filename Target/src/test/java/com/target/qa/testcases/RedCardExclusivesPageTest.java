@@ -15,22 +15,28 @@ public class RedCardExclusivesPageTest extends CommonElements{
 	
 	@Test
 	public void verifyRedCardExclusivesPageDisplayed(){
+		ExecutionStartLog("verifyRedCardExclusivesPageDisplayed");
 		HomePage homePage = new HomePage();
 		RedCardExclusivesPage redcardExclusivesPage = homePage.clickRedCardExclusives();
 		Assert.assertTrue(redcardExclusivesPage.getPageTitle().contains("RedCard :"), "RedCardExclusives Link on Deals Not Working");
+		ExecutionEndLog("verifyRedCardExclusivesPageDisplayed");
 	}
 	
 	@Test
 	public void verifyCardApplyingOptions(){
+		ExecutionStartLog("verifyCardApplyingOptions");
 		HomePage homePage = new HomePage();
 		RedCardExclusivesPage redcardExclusivesPage = homePage.clickRedCardExclusives();
 		Assert.assertTrue(redcardExclusivesPage.getCardApplyingOptions().size()==2, "Card Applying Option Count is incorrect");
+		ExecutionEndLog("verifyCardApplyingOptions");
 	}
 	
 	@Test
 	public void verifyCreditCardPaymentOptions(){
+		ExecutionStartLog("verifyCreditCardPaymentOptions");
 		HomePage homePage = new HomePage();
 		RedCardExclusivesPage redcardExclusivesPage = homePage.clickRedCardExclusives();
 		Assert.assertTrue(redcardExclusivesPage.getCreditCardPaymentOptions().size()==4, "Credit Card Payment Option Count is incorrect");
+		ExecutionEndLog("verifyCreditCardPaymentOptions");
 	}
 }

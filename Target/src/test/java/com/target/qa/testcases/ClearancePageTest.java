@@ -18,20 +18,25 @@ public class ClearancePageTest extends CommonElements{
 	
 	@Test
 	public void verifyClearancePageDisplayed(){
+		ExecutionStartLog("verifyClearancePageDisplayed");
 		HomePage homePage = new HomePage();
 		ClearancePage clearancePage = homePage.clickClearnce();
 		Assert.assertTrue(clearancePage.getPageTitle().contains("Clearance : "), "Clearance Link on Deals Not Working");
+		ExecutionEndLog("verifyClearancePageDisplayed");
 	}
 	
 	@Test
 	public void verifyClearanceList(){
+		ExecutionStartLog("verifyClearanceList");
 		HomePage homePage = new HomePage();
 		ClearancePage clearancePage = homePage.clickClearnce();
 		Assert.assertTrue(clearancePage.getClearanceList().size()==6, "Clearance List is incorrect");
+		ExecutionEndLog("verifyClearanceList");
 	}
 	
 	@Test
 	public void verifyBrandFilterFunctionality(){
+		ExecutionStartLog("verifyBrandFilterFunctionality");
 		HomePage homePage = new HomePage();
 		ClearancePage clearancePage = homePage.clickClearnce();
 		clearancePage.clickBrand();
@@ -42,6 +47,7 @@ public class ClearancePageTest extends CommonElements{
 		for(int i=1;i<=productList.size();i++){
 		Assert.assertTrue(clearancePage.getProductBrandName(i).equals(brandName), "Brand Filter Functionality For Product"+i+" Not Working");
 		}
+		ExecutionEndLog("verifyBrandFilterFunctionality");
 	}
 
 }

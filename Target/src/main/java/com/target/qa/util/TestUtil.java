@@ -23,7 +23,6 @@ public class TestUtil extends TestBase{
 
 	public static long PAGE_LOAD_TIMEOUT = 60;
 	public static long IMPLICIT_WAIT = 25;
-	public WebDriver driver; 
 	
 	static String currectDir = System.getProperty("user.dir");
 	public static String TESTDATA_SHEET_PATH = currectDir+"/src/main/java/com/target/qa/testdata/TargetTestData.xlsx";

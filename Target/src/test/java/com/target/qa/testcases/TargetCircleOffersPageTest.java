@@ -16,22 +16,28 @@ public class TargetCircleOffersPageTest extends CommonElements{
 	
 	@Test
 	public void verifyTargetCircleOffersPageDisplayed(){
+		ExecutionStartLog("verifyTargetCircleOffersPageDisplayed");
 		HomePage homePage = new HomePage();
 		TargetCircleOffersPage targetCircleOffersPage = homePage.clickTargetCircleOffers();
 		Assert.assertTrue(targetCircleOffersPage.getPageTitle().contains("Offers"), "TargetCicleOffers Link on Deals Not Working");
+		ExecutionEndLog("verifyTargetCircleOffersPageDisplayed");
 	}
 	
 	@Test
 	public void verifyAllCategoriesOptionSelected(){
+		ExecutionStartLog("verifyAllCategoriesOptionSelected");
 		HomePage homePage = new HomePage();
 		TargetCircleOffersPage targetCircleOffersPage = homePage.clickTargetCircleOffers();
 		Assert.assertTrue(targetCircleOffersPage.isAllCategoriesOptionSelected(), "All Categories Option Not Selected");
+		ExecutionEndLog("verifyAllCategoriesOptionSelected");
 	}
 	
 	@Test
 	public void verifyAllCategoriesDisplayed(){
+		ExecutionStartLog("verifyAllCategoriesDisplayed");
 		HomePage homePage = new HomePage();
 		TargetCircleOffersPage targetCircleOffersPage = homePage.clickTargetCircleOffers();
 		Assert.assertTrue(targetCircleOffersPage.getCategoriesList().size()==14, "All the Categories Not Displayed");
+		ExecutionEndLog("verifyAllCategoriesDisplayed");
 	}
 }

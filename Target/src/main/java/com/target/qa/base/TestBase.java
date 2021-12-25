@@ -8,6 +8,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,11 +22,12 @@ import com.target.qa.util.TestUtil;
 import com.target.qa.util.WebEventListener;
 
 public class TestBase {
-	public WebDriver driver;
+	public static WebDriver driver;
 	public static Properties prop;
 	public  EventFiringWebDriver e_driver;
 	public static WebEventListener eventListener;
 	public static ThreadLocal<WebDriver> tdriver = new ThreadLocal<WebDriver>();
+	Logger log = Logger.getLogger(TestBase.class);
 	
 	public TestBase(){
 		try{
@@ -42,16 +44,17 @@ public class TestBase {
 	}
 	@BeforeMethod
 	public void initialization(){
+		ExecutionStartLog("TestCaseExecution");
 		String browserName = prop.getProperty("browser");
 		if(browserName.equals("chrome")){
 		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/Chrome/chromedriver.exe");
 		driver = new ChromeDriver();
 		}
 		else{
-			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/Firefox/geckodriver.exe");
+		System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/Firefox/geckodriver.exe");
 		driver = new FirefoxDriver();
 		}
-		
+		log.info("Launching "+browserName+" browser");
 		e_driver = new EventFiringWebDriver(driver);
 		eventListener = new WebEventListener();
 		e_driver.register(eventListener);
@@ -60,8 +63,10 @@ public class TestBase {
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(TestUtil.PAGE_LOAD_TIMEOUT,TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(TestUtil.IMPLICIT_WAIT,TimeUnit.SECONDS); 
-		tdriver.set(driver);
-		driver = getDriver();
+		//tdriver.set(driver);
+		//driver = getDriver();
+		driver.get(prop.getProperty("url"));
+		log.info("Navigating to url "+prop.getProperty("url"));
 }
 	
 	public static synchronized WebDriver getDriver() {
@@ -80,8 +85,18 @@ public class TestBase {
 		return path;
 	}
 	
+	public void ExecutionStartLog(String message){
+	log.info("***********************Strating"+message+"***********************");	
+	}
+	
+    public void ExecutionEndLog(String message){
+    log.info("***********************Ending"+message+"***********************");	
+	}
+	
 	@AfterMethod
 	public void tearDown(){
-		driver.quit();
+	driver.quit();
+	log.info("***********************Closing The Browser***********************");	
+	ExecutionEndLog("TestCaseExecution");
 	}
 }	

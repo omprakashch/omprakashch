@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Target Application Test Automation Test Suite" verbose="1" parallel = "methods" thread-count="3" >
+<suite name="Target Application Test Automation Test Suite" verbose="1" parallel = "methods" thread-count="1" >
 
 	 <listeners>
 		<listener class-name="com.target.qa.util.listeners.ExtentReportListener" />
@@ -9,12 +9,12 @@
 
 	<test name="Target App Test Cases">
 		<classes>
-			<class name="com.target.qa.testcases.HomePageTest"/>
-			<!-- <class name="com.target.qa.testcases.ClearancePageTest"/>
+			<class name="com.target.qa.testcases.HomePageTest"/>	
+			<class name="com.target.qa.testcases.ClearancePageTest"/>
 			<class name="com.target.qa.testcases.RedCardExclusivesPageTest"/>
 			<class name="com.target.qa.testcases.TargetCircleOffersPageTest"/>
 			<class name="com.target.qa.testcases.TopDealsPageTest"/>
-			<class name="com.target.qa.testcases.WeeklyAdPageTest"/> -->
+			<class name="com.target.qa.testcases.WeeklyAdPageTest"/>
 		</classes>
 	</test>
 </suite>

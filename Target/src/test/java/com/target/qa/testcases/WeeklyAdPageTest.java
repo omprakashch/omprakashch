@@ -15,23 +15,29 @@ public class WeeklyAdPageTest extends CommonElements{
 	
 	@Test
 	public void verifyWeeklyAdPageDisplayed(){
+		ExecutionStartLog("verifyWeeklyAdPageDisplayed");
 		HomePage homePage = new HomePage();
 		WeeklyAdPage weeklyAdPage = homePage.clickWeeklyAd();
 		Assert.assertTrue(weeklyAdPage.getPageTitle().contains("Target Weekly Ad"), "Weakly Ad Link on Deals Not Working");
+		ExecutionEndLog("verifyWeeklyAdPageDisplayed");
 	}
 	
 	@Test
 	public void verifyWeeklyAdsAndCatalogsSectionDisplayed(){
+		ExecutionStartLog("verifyWeeklyAdsAndCatalogsSectionDisplayed");
 		HomePage homePage = new HomePage();
 		WeeklyAdPage weeklyAdPage = homePage.clickWeeklyAd();
 		Assert.assertTrue(weeklyAdPage.isWeeklyAdsAndCatalogsSectionPresent(), "Weakly Ads & Catalogs Section Not Displayed");
+		ExecutionStartLog("verifyWeeklyAdsAndCatalogsSectionDisplayed");
 	}
 	
 	@Test
 	public void verifyViewTheWeeklyAdButtonAndTargetTradeMarkLogoDisplayed(){
+		ExecutionStartLog("verifyViewTheWeeklyAdButtonAndTargetTradeMarkLogoDisplayed");
 		HomePage homePage = new HomePage();
 		WeeklyAdPage weeklyAdPage = homePage.clickWeeklyAd();
 		Assert.assertTrue(weeklyAdPage.isViewTheWeeklyAdButtonPresent(), "View The Weekly Ad Button Not Displayed");
 		Assert.assertTrue(weeklyAdPage.isTargetTradeMarkLogoPresent(), "Target Trade Mark Logo Not Displayed");
+		ExecutionEndLog("verifyViewTheWeeklyAdButtonAndTargetTradeMarkLogoDisplayed");
 	}
 }

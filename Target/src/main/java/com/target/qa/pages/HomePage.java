@@ -39,6 +39,7 @@ public class HomePage extends CommonElements{
 	
 	@Step("click on signin icon step... ")
 	public void clickSignInIcon(){
+		System.out.println("SignInIcon "+SignInIcon);
 		click(SignInIcon);
 	}
 	
